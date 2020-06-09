@@ -1163,6 +1163,7 @@ GameObject:
   - component: {fileID: 956025203}
   - component: {fileID: 956025202}
   - component: {fileID: 956025201}
+  - component: {fileID: 956025206}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1183,6 +1184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roundTimer: {fileID: 1473864737}
+  totalRoundTime: 50
+  currentRoundTime: 0
 --- !u!114 &956025202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,6 +1266,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 2.61}
   m_SizeDelta: {x: 330, y: 634}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &956025206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956025200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 7
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1050288322
 GameObject:
   m_ObjectHideFlags: 0
