@@ -36,18 +36,21 @@ public class CollectableCoin : MonoBehaviourPun, IPunObservable
     }
 
     [PunRPC]
-    void RPC_IncreaseCoins(int objToIncreaseCoinsOn)
+    void RPC_IncreaseCoins()
     {;
+        Debug.LogError("About to increase coins collected");
         OculusPlayer.instance.playerInfoController.coinsCollected += 1;
+        Debug.LogError("About to destroy coin object");
+
         Destroy(gameObject);
     }
 
     public void ObjectTouched(GameObject go)
     {
-        int viewID = go.gameObject.GetComponentInParent<Photon.Pun.PhotonView>().ViewID;
+        //int viewID = go.gameObject.GetComponentInParent<Photon.Pun.PhotonView>().ViewID;
 
 
-        pv.RPC("RPC_IncreaseCoins", RpcTarget.All, viewID);
+        pv.RPC("RPC_IncreaseCoins", RpcTarget.All);
 
         OnTouched.Invoke();
     }

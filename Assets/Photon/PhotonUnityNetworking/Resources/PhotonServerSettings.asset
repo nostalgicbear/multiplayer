@@ -42,6 +42,7 @@ MonoBehaviour:
   - RPC_SetColor
   - SetKinematicFalse
   - SetKinematicTrue
+  - RPC_IncreaseCoins
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
