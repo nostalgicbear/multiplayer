@@ -46,7 +46,7 @@ public class CollectableCoin : MonoBehaviourPun, IPunObservable
 
     public void ObjectTouched(GameObject go)
     {
-        int viewID = OculusPlayer.instance.GetComponent<PhotonView>().ViewID;
+        int viewID = OculusPlayer.instance.personalManager.ReturnHeadPhotonView().ViewID;
 
         
         pv.RPC("RPC_IncreaseCoins", RpcTarget.All, viewID);
