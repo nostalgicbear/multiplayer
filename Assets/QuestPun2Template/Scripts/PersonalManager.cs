@@ -47,7 +47,7 @@ namespace Networking.Pun2
             //Instantiate Head
             GameObject obj = (PhotonNetwork.Instantiate(headPrefab.name, OculusPlayer.instance.head.transform.position, OculusPlayer.instance.head.transform.rotation, 0));
             obj.GetComponent<SetColor>().SetColorRPC(PhotonNetwork.LocalPlayer.ActorNumber);
-            
+            OculusPlayer.instance.playerInfoController = obj.GetComponent<PlayerInfoController>();
             //Instantiate right Tools
             obj = (PhotonNetwork.Instantiate(handRPrefab.name, OculusPlayer.instance.rightHand.transform.position, OculusPlayer.instance.rightHand.transform.rotation, 0));
             for (int i = 0; i < obj.transform.childCount; i++)

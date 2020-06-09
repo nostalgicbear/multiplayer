@@ -31,26 +31,25 @@ public class CollectableCoin : MonoBehaviourPun, IPunObservable
     private void OnTriggerEnter(Collider other)
     {
         Debug.LogError(other.name + " is whats colliding with the coin");
-        if (other.gameObject.GetComponentInParent<Photon.Pun.PhotonView>().IsMine)
+        if (other.gameObject.GetComponentInParent<Photon.Pun.PhotonView>().IsMine) //it was my hand that touched it 
             ObjectTouched(other.gameObject);
     }
 
     [PunRPC]
-    void RPC_IncreaseCoins()
+    void RPC_IncreaseCoins(int objToIncreaseCoinsOn)
     {;
-        Debug.LogError("About to increase coins collected");
-        OculusPlayer.instance.playerInfoController.coinsCollected += 1;
-        Debug.LogError("About to destroy coin object");
+        PlayerInfoController playerInfoController = PhotonView.Find(objToIncreaseCoinsOn).GetComponent<PlayerInfoController>();
+        playerInfoController.coinsCollected += 1;
 
         Destroy(gameObject);
     }
 
     public void ObjectTouched(GameObject go)
     {
-        //int viewID = go.gameObject.GetComponentInParent<Photon.Pun.PhotonView>().ViewID;
+        int viewID = OculusPlayer.instance.GetComponent<PhotonView>().ViewID;
 
-
-        pv.RPC("RPC_IncreaseCoins", RpcTarget.All);
+        
+        pv.RPC("RPC_IncreaseCoins", RpcTarget.All, viewID);
 
         OnTouched.Invoke();
     }

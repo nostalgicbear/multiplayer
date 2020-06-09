@@ -13,6 +13,7 @@ namespace Networking.Pun2
         public GameObject leftHand;
         public PlayerInfoController playerInfoController;
 
+
         public static OculusPlayer instance;
 
         private void Awake()
