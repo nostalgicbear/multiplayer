@@ -6,6 +6,7 @@ using Photon.Realtime;
 
 public class SyncCube : MonoBehaviourPun, IPunObservable
 {
+    
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
