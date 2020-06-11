@@ -10,11 +10,14 @@ namespace Networking.Pun2
 {
     public class PersonalManager : MonoBehaviourPun
     {
+        public bool useCustomHeads = false;
         [SerializeField] GameObject headPrefab;
         [SerializeField] GameObject handRPrefab;
         [SerializeField] GameObject handLPrefab;
         [SerializeField] GameObject ovrCameraRig;
         [SerializeField] Transform[] spawnPoints;
+
+        public string headToUse;
 
         PhotonView headPhotonView;
 
@@ -52,8 +55,10 @@ namespace Networking.Pun2
         private void Start()
         {
             //Instantiate Head
-            GameObject obj = (PhotonNetwork.Instantiate(headPrefab.name, OculusPlayer.instance.head.transform.position, OculusPlayer.instance.head.transform.rotation, 0));
-            obj.GetComponent<SetColor>().SetColorRPC(PhotonNetwork.LocalPlayer.ActorNumber);
+            GameObject obj = (PhotonNetwork.Instantiate(headToUse, OculusPlayer.instance.head.transform.position, OculusPlayer.instance.head.transform.rotation, 0));
+
+            //GameObject obj = (PhotonNetwork.Instantiate(headPrefab.name, OculusPlayer.instance.head.transform.position, OculusPlayer.instance.head.transform.rotation, 0));
+            // obj.GetComponent<SetColor>().SetColorRPC(PhotonNetwork.LocalPlayer.ActorNumber);
             OculusPlayer.instance.playerInfoController = obj.GetComponent<PlayerInfoController>();
             OculusPlayer.instance.personalManager = this;
             headPhotonView = obj.GetComponent<PhotonView>();
